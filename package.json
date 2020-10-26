@@ -19,6 +19,7 @@
     "build-storybook": "build-storybook -s ./public/static  -c .storybook -o .storybookout"
   },
   "dependencies": {
+    "@blueprintjs/core": "^3.35.0",
     "@next/bundle-analyzer": "^9.4.4",
     "autoprefixer": "^9.6.1",
     "bootstrap": "^4.5.2",
