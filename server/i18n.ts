@@ -1,6 +1,4 @@
-// #region Global Imports
 import NextI18Next from "next-i18next";
-// #endregion Global Imports
 
 const NextI18NextInstance = new NextI18Next({
     defaultLanguage: "en",

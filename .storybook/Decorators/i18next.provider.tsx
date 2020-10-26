@@ -7,7 +7,7 @@ const path = require("path");
 i18n.use(initReactI18next)
     .use(Backend)
     .init({
-        fallbackLng: "tr",
+        fallbackLng: "en",
         debug: true,
         ns: ["common"],
         interpolation: {
@@ -15,11 +15,14 @@ i18n.use(initReactI18next)
         },
         backend: {
             loadPath: path.join(__dirname, "../locales/{{lng}}/{{ns}}.json"),
-            addPath: path.join(__dirname, "../locales/{{lng}}/{{ns}}.missing.json"),
+            addPath: path.join(
+                __dirname,
+                "../locales/{{lng}}/{{ns}}.missing.json"
+            ),
         },
         react: {
             useSuspense: false,
-        }
+        },
     });
 
 export const withI18next = () => (story: any) => {

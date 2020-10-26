@@ -6,7 +6,7 @@ declare namespace IHomePage {
     export interface IProps extends WithTranslation {}
 
     export interface InitialProps {
-        namespacesRequired: string[];
+        namespacesRequired?: string[];
     }
 
     export interface IStateProps {
