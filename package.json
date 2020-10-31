@@ -20,9 +20,13 @@
   },
   "dependencies": {
     "@blueprintjs/core": "^3.35.0",
+    "@blueprintjs/datetime": "^3.19.3",
+    "@blueprintjs/select": "^3.14.3",
     "@next/bundle-analyzer": "^9.4.4",
+    "@types/classnames": "^2.2.11",
     "autoprefixer": "^9.6.1",
     "bootstrap": "^4.5.2",
+    "classnames": "^2.2.6",
     "cross-env": "^5.2.1",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
