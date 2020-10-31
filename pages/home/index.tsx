@@ -1,22 +1,25 @@
 import * as React from "react";
 import { NextPage } from "next";
+import "@blueprintjs/core/lib/css/blueprint.css";
+import { FocusStyleManager } from "@blueprintjs/core";
+import { Heading } from "@Components/Heading";
 
-// import { withTranslation } from "@Server/i18n";
-import { HomeActions } from "@Actions";
-import { IHomePage, ReduxNextPageContext } from "@Interfaces";
+FocusStyleManager.onlyShowFocusOnTabs();
 
-const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = () => {
-    return <div />;
+interface IHomepageInitialProps {
+    namespacesRequired: string[];
+}
+
+const Home: NextPage = () => {
+    return (
+        <>
+            <Heading text="asd" />
+        </>
+    );
 };
 
-Home.getInitialProps = async (
-    ctx: ReduxNextPageContext
-): Promise<IHomePage.InitialProps> => {
-    await ctx.store.dispatch(
-        HomeActions.GetApod({
-            params: { hd: true },
-        })
-    );
+Home.getInitialProps = async (): /* ctx: ReduxNextPageContext */
+Promise<IHomepageInitialProps> => {
     return { namespacesRequired: ["common"] };
 };
 
