@@ -9,9 +9,7 @@ import {
 } from "@blueprintjs/core";
 import styles from "./Heading.module.scss";
 
-interface IHeadingProps {
-    text?: string;
-}
+interface IHeadingProps {}
 
 const Heading: React.FC<IHeadingProps> = () => {
     return (

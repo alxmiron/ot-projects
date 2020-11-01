@@ -1,4 +1,3 @@
-// #region Global Imports
 import * as React from "react";
 import Document, {
     Html,
@@ -8,7 +7,6 @@ import Document, {
     DocumentContext,
 } from "next/document";
 import { ServerStyleSheet } from "styled-components";
-// #endregion Global Imports
 
 class WebAppDocument extends Document {
     static async getInitialProps(ctx: DocumentContext) {

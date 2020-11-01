@@ -44,14 +44,6 @@ After the setup is complete, your app should have the following directory struct
 │   │   │   ├── index.spec.tsx
 │   │   │   ├── index.tsx
 │   │   │   └── style.scss
-│   │   ├── Layout
-│   │   │   ├── Layout.d.ts
-│   │   │   ├── index.spec.tsx
-│   │   │   └── index.tsx
-│   │   ├── LocaleButton
-│   │   │   ├── LocaleButton.d.ts
-│   │   │   ├── index.spec.tsx
-│   │   │   └── index.tsx
 │   │   ├── Navbar
 │   │   │   ├── Navbar.d.ts
 │   │   │   ├── index.spec.tsx

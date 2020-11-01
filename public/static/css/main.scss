@@ -1,1 +1,7 @@
 @import "./bootstrap/index";
+
+html,
+body,
+#__next {
+    height: 100%;
+}

@@ -1,10 +1,6 @@
 import * as React from "react";
 import { NextPage } from "next";
-import "@blueprintjs/core/lib/css/blueprint.css";
-import { FocusStyleManager } from "@blueprintjs/core";
 import { Heading } from "@Components/Heading";
-
-FocusStyleManager.onlyShowFocusOnTabs();
 
 interface IHomepageInitialProps {
     namespacesRequired: string[];
@@ -13,7 +9,7 @@ interface IHomepageInitialProps {
 const Home: NextPage = () => {
     return (
         <>
-            <Heading text="asd" />
+            <Heading />
         </>
     );
 };
