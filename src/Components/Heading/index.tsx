@@ -5,8 +5,11 @@ import {
     Button,
     Icon,
     InputGroup,
+    Popover,
+    Position,
     Classes as BpClasses,
 } from "@blueprintjs/core";
+import { UserMenu } from "@Components/UserMenu";
 import styles from "./Heading.module.scss";
 
 interface IHeadingProps {}
@@ -26,10 +29,13 @@ const Heading: React.FC<IHeadingProps> = () => {
                 </Navbar>
             </div>
             <div className={styles.userContainer}>
-                <Button
-                    className={cs(styles.user, BpClasses.SKELETON)}
-                    minimal
-                />
+                <Popover position={Position.BOTTOM_RIGHT}>
+                    <Button
+                        className={cs(styles.user, BpClasses.SKELETON)}
+                        minimal
+                    />
+                    <UserMenu />
+                </Popover>
             </div>
             <div className={styles.sectionsNavbarContainer}>
                 <Navbar className={styles.sectionsNavbar}>

@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useSelector } from "react-redux";
+import { withRouter, NextRouter } from "next/router";
 import { NextPage } from "next";
 import Link from "next/link";
 import {
@@ -9,10 +11,22 @@ import {
 } from "@blueprintjs/core";
 import { SignupForm } from "@Components/SignupForm";
 
-const SignupPage: NextPage = () => {
+import { accessTokenSelector } from "@Reducers/home";
+
+interface ISignupPageProps {
+    router: NextRouter;
+}
+
+const SignupPage: NextPage<ISignupPageProps> = ({ router }) => {
+    const accessToken = useSelector(accessTokenSelector);
+
+    React.useEffect(() => {
+        if (accessToken) router.replace("/");
+    }, [router, accessToken]);
+
     return (
         <>
-            <Navbar>
+            <Navbar fixedToTop>
                 <NavbarGroup>
                     <NavbarHeading>OT. Signup</NavbarHeading>
                 </NavbarGroup>
@@ -25,4 +39,4 @@ const SignupPage: NextPage = () => {
     );
 };
 
-export default SignupPage;
+export default withRouter(SignupPage);

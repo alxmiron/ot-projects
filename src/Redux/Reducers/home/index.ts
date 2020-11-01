@@ -1,35 +1,44 @@
-// #region Local Imports
-import { ActionConsts } from "@Definitions";
-// #endregion Local Imports
+import { Reducer } from "redux";
+import { IAction } from "@Interfaces";
+import { ISetUserPayload } from "./actions";
+import { IStateProps } from "./interface";
+import { getLocalItem, saveLocalItem, removeLocalItem } from "./utils";
 
-// #region Interface Imports
-import { IAction, IHomePage } from "@Interfaces";
-// #endregion Interface Imports
+export * from "./interface";
+export * from "./actions";
+export * from "./selectors";
 
-const INITIAL_STATE: IHomePage.IStateProps = {
-    home: {
-        version: 1,
-    },
-    image: {
-        url: "",
-    },
+export const initialState: IStateProps = {
+    accessToken: null,
+    user: null,
 };
 
-type IMapPayload = IHomePage.Actions.IMapPayload;
+const addLocalState = (state: IStateProps): IStateProps => {
+    return {
+        ...state,
+        accessToken: getLocalItem("ot_accessToken"),
+        user: getLocalItem("ot_user", true),
+    };
+};
 
-export const HomeReducer = (
-    state = INITIAL_STATE,
-    action: IAction<IMapPayload>
+export const HomeReducer: Reducer<IStateProps, IAction<ISetUserPayload>> = (
+    state = addLocalState(initialState),
+    action
 ) => {
     switch (action.type) {
-        case ActionConsts.Home.SetReducer:
+        case "Home_SetUser":
+            saveLocalItem("ot_user", action.payload?.user);
+            saveLocalItem("ot_accessToken", action.payload?.accessToken);
             return {
                 ...state,
-                ...action.payload,
+                accessToken: action.payload?.accessToken || null,
+                user: action.payload?.user || null,
             };
 
-        case ActionConsts.Home.ResetReducer:
-            return INITIAL_STATE;
+        case "Home_ResetReducer":
+            removeLocalItem("ot_user");
+            removeLocalItem("ot_accessToken");
+            return initialState;
 
         default:
             return state;

@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useSelector } from "react-redux";
+import { withRouter, NextRouter } from "next/router";
 import { NextPage } from "next";
 import Link from "next/link";
 import {
@@ -7,12 +9,24 @@ import {
     NavbarHeading,
     Alignment,
 } from "@blueprintjs/core";
-import { LoginForm } from "@Components/LoginForm";
 
-const LoginPage: NextPage = () => {
+import { LoginForm } from "@Components/LoginForm";
+import { accessTokenSelector } from "@Reducers/home";
+
+interface ILoginPageProps {
+    router: NextRouter;
+}
+
+const LoginPage: NextPage<ILoginPageProps> = ({ router }) => {
+    const accessToken = useSelector(accessTokenSelector);
+
+    React.useEffect(() => {
+        if (accessToken) router.replace("/");
+    }, [router, accessToken]);
+
     return (
         <>
-            <Navbar>
+            <Navbar fixedToTop>
                 <NavbarGroup>
                     <NavbarHeading>OT. Login</NavbarHeading>
                 </NavbarGroup>
@@ -25,4 +39,4 @@ const LoginPage: NextPage = () => {
     );
 };
 
-export default LoginPage;
+export default withRouter(LoginPage);

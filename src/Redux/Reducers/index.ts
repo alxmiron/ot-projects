@@ -1,11 +1,10 @@
-// #region Global Imports
 import { combineReducers } from "redux";
-// #endregion Global Imports
+import { IStateProps as IHomeStateProps, HomeReducer } from "./home";
 
-// #region Local Imports
-import { HomeReducer } from "./home";
-// #endregion Local Imports
-
-export default combineReducers({
+export const Reducers = combineReducers({
     home: HomeReducer,
 });
+
+export interface IStateProps {
+    home: IHomeStateProps;
+}

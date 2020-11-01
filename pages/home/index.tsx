@@ -1,12 +1,22 @@
-import * as React from "react";
+import React from "react";
+import { useSelector } from "react-redux";
+import { withRouter, NextRouter } from "next/router";
 import { NextPage } from "next";
+
 import { Heading } from "@Components/Heading";
+import { accessTokenSelector } from "@Reducers/home";
 
 interface IHomepageInitialProps {
-    namespacesRequired: string[];
+    router: NextRouter;
 }
 
-const Home: NextPage = () => {
+const Home: NextPage<IHomepageInitialProps> = ({ router }) => {
+    const accessToken = useSelector(accessTokenSelector);
+
+    React.useEffect(() => {
+        if (!accessToken) router.replace("/login");
+    }, [router, accessToken]);
+
     return (
         <>
             <Heading />
@@ -14,11 +24,4 @@ const Home: NextPage = () => {
     );
 };
 
-Home.getInitialProps = async (): /* ctx: ReduxNextPageContext */
-Promise<IHomepageInitialProps> => {
-    return { namespacesRequired: ["common"] };
-};
-
-const Extended = Home; // withTranslation("common")(Home);
-
-export default Extended;
+export default withRouter(Home);
